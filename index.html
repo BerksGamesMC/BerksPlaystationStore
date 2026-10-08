@@ -1,430 +1,614 @@
-```html
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Berks PlayStation</title>
+<title>Berks PlayStation</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        body {
-            background:
-                radial-gradient(circle at top, #202020 0%, #090909 45%, #000 100%);
-            color: white;
-            min-height: 100vh;
-        }
+body {
+    background:
+        radial-gradient(circle at top, #151d2b 0%, #080b10 45%, #030405 100%);
+    color: white;
+    min-height: 100vh;
+}
 
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #050505, #151515);
-            border-bottom: 2px solid #1877ff;
-            padding: 22px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 0 25px rgba(24,119,255,.25);
-        }
+/* HEADER */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #1877ff, #00c6ff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            box-shadow: 0 0 20px rgba(24,119,255,.6);
-        }
+    padding: 18px 5%;
 
-        nav {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+    background: rgba(5, 8, 13, 0.94);
+    backdrop-filter: blur(15px);
 
-        nav button {
-            background: #111;
-            color: #ddd;
-            border: 1px solid #333;
-            padding: 11px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: .25s;
-            font-weight: bold;
-        }
+    border-bottom: 1px solid #1d65d8;
+    box-shadow: 0 0 30px rgba(0, 110, 255, 0.15);
+}
 
-        nav button:hover,
-        nav button.active {
-            background: #1877ff;
-            color: white;
-            border-color: #1877ff;
-            box-shadow: 0 0 15px rgba(24,119,255,.45);
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-        /* HERO */
-        .hero {
-            padding: 80px 7% 55px;
-            text-align: center;
-        }
+    font-size: 27px;
+    font-weight: 900;
+}
 
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 80px);
-            font-weight: 1000;
-            background: linear-gradient(90deg, #fff, #1877ff, #00d4ff, #fff);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: gradient 5s infinite;
-        }
+.logo-icon {
+    width: 46px;
+    height: 46px;
 
-        @keyframes gradient {
-            0% { background-position: 0%; }
-            50% { background-position: 100%; }
-            100% { background-position: 0%; }
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .hero p {
-            margin-top: 15px;
-            color: #aaa;
-            font-size: 18px;
-        }
+    border-radius: 13px;
 
-        /* CONTENT */
-        .container {
-            width: 88%;
-            max-width: 1250px;
-            margin: auto;
-            padding-bottom: 70px;
-        }
+    background: linear-gradient(135deg, #087cff, #00d4ff);
 
-        .section {
-            display: none;
-            animation: fade .35s ease;
-        }
+    box-shadow:
+        0 0 15px rgba(0, 130, 255, .6),
+        inset 0 0 15px rgba(255,255,255,.15);
+}
 
-        .section.active {
-            display: block;
-        }
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
 
-        @keyframes fade {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+nav button {
+    padding: 11px 15px;
 
-        .section-title {
-            font-size: 30px;
-            margin-bottom: 25px;
-            border-left: 5px solid #1877ff;
-            padding-left: 14px;
-        }
+    color: #bbb;
+    background: #0c1016;
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-        }
+    border: 1px solid #252b35;
+    border-radius: 10px;
 
-        .card {
-            background: linear-gradient(145deg, #151515, #090909);
-            border: 1px solid #292929;
-            border-radius: 18px;
-            padding: 25px;
-            transition: .3s;
-            box-shadow: 0 8px 35px rgba(0,0,0,.35);
-        }
+    font-weight: bold;
+    cursor: pointer;
 
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: #1877ff;
-            box-shadow: 0 10px 35px rgba(24,119,255,.2);
-        }
+    transition: .25s;
+}
 
-        .platform {
-            font-size: 15px;
-            color: #1877ff;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+nav button:hover,
+nav button.active {
+    color: white;
 
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
+    background: linear-gradient(135deg, #087cff, #005bea);
 
-        .card p {
-            color: #aaa;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
+    border-color: #087cff;
 
-        .download {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, #1877ff, #005bea);
-            padding: 13px 22px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: .25s;
-            box-shadow: 0 5px 18px rgba(24,119,255,.25);
-        }
+    box-shadow: 0 0 18px rgba(0, 120, 255, .35);
+}
 
-        .download:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 25px rgba(24,119,255,.55);
-        }
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 85px 20px 60px;
+}
 
-        .info {
-            margin-top: 35px;
-            padding: 25px;
-            border: 1px solid #252525;
-            border-radius: 18px;
-            background: #0d0d0d;
-        }
+.hero h1 {
+    font-size: clamp(42px, 7vw, 78px);
+    font-weight: 1000;
 
-        .info h3 {
-            margin-bottom: 15px;
-            color: #1877ff;
-        }
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #1684ff,
+        #00d4ff,
+        #ffffff
+    );
 
-        .info p {
-            color: #aaa;
-            line-height: 1.8;
-        }
+    background-size: 300%;
 
-        .success {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 7px 12px;
-            border-radius: 8px;
-            background: rgba(0,200,100,.1);
-            color: #4cff9b;
-            font-size: 14px;
-            font-weight: bold;
-        }
+    -webkit-background-clip: text;
+    background-clip: text;
 
-        /* FOOTER */
-        footer {
-            border-top: 1px solid #222;
-            text-align: center;
-            padding: 30px;
-            color: #777;
-        }
+    color: transparent;
 
-        footer strong {
-            color: #1877ff;
-        }
+    animation: gradient 5s infinite;
+}
 
-        @media(max-width: 800px) {
-            header {
-                flex-direction: column;
-                gap: 18px;
-            }
+@keyframes gradient {
+    0% {
+        background-position: 0%;
+    }
 
-            nav {
-                justify-content: center;
-            }
+    50% {
+        background-position: 100%;
+    }
 
-            .hero {
-                padding-top: 50px;
-            }
-        }
-    </style>
+    100% {
+        background-position: 0%;
+    }
+}
+
+.hero p {
+    margin-top: 15px;
+
+    color: #8993a3;
+
+    font-size: 18px;
+}
+
+/* MAIN */
+.container {
+    width: 88%;
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding-bottom: 70px;
+}
+
+.section {
+    display: none;
+
+    animation: fade .35s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 31px;
+
+    margin-bottom: 25px;
+
+    padding-left: 15px;
+
+    border-left: 5px solid #087cff;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 22px;
+}
+
+.card {
+    position: relative;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(145deg, #111720, #080b10);
+
+    border: 1px solid #252d38;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    border-color: #087cff;
+
+    box-shadow:
+        0 15px 45px rgba(0,110,255,.2);
+}
+
+.platform {
+    color: #1684ff;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 25px;
+
+    margin-bottom: 13px;
+}
+
+.card p {
+    color: #9ba5b4;
+
+    line-height: 1.7;
+
+    margin-bottom: 22px;
+}
+
+/* DOWNLOAD */
+.download {
+    display: inline-block;
+
+    padding: 13px 23px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(135deg, #087cff, #005bea);
+
+    box-shadow:
+        0 6px 20px rgba(0,110,255,.25);
+
+    transition: .25s;
+}
+
+.download:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 28px rgba(0,130,255,.55);
+}
+
+.success {
+    display: block;
+
+    width: fit-content;
+
+    margin-top: 15px;
+
+    padding: 7px 12px;
+
+    color: #4cff9b;
+
+    background: rgba(0, 200, 100, .08);
+
+    border: 1px solid rgba(0, 200, 100, .2);
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+/* INFO */
+.info {
+    margin-top: 35px;
+
+    padding: 27px;
+
+    background: #090d13;
+
+    border: 1px solid #252d38;
+
+    border-radius: 18px;
+}
+
+.info h3 {
+    color: #1684ff;
+
+    margin-bottom: 15px;
+}
+
+.info p {
+    color: #9ba5b4;
+
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    color: #687180;
+
+    border-top: 1px solid #202630;
+}
+
+footer strong {
+    color: #1684ff;
+}
+
+/* MOBILE */
+@media(max-width: 850px) {
+
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
+
     <div class="logo">
         <div class="logo-icon">B</div>
         <span>Berks PlayStation</span>
     </div>
 
     <nav>
-        <button class="active" onclick="openTab('ps3oyun', this)">PS3 Oyun</button>
-        <button onclick="openTab('ps3yama', this)">PS3 Türkçe Yama</button>
-        <button onclick="openTab('ps4oyun', this)">PS4 Oyun</button>
-        <button onclick="openTab('ps4yama', this)">PS4 Türkçe Yama</button>
+
+        <button
+            class="active"
+            onclick="openTab('ps3oyun', this)">
+            PS3 Oyun
+        </button>
+
+        <button
+            onclick="openTab('ps3yama', this)">
+            PS3 Türkçe Yama
+        </button>
+
+        <button
+            onclick="openTab('ps4oyun', this)">
+            PS4 Oyun
+        </button>
+
+        <button
+            onclick="openTab('ps4yama', this)">
+            PS4 Türkçe Yama
+        </button>
+
     </nav>
+
 </header>
 
 
+<!-- HERO -->
 <section class="hero">
+
     <h1>BERKS PLAYSTATION</h1>
-    <p>PS3 & PS4 Oyunlar • Türkçe Yamalar • Berks PlayStation</p>
+
+    <p>
+        PS3 & PS4 Oyunlar • Türkçe Yamalar • Berks PlayStation
+    </p>
+
 </section>
 
 
 <main class="container">
 
-    <!-- PS3 OYUN -->
-    <section id="ps3oyun" class="section active">
-        <h2 class="section-title">🎮 PS3 Oyun</h2>
 
-        <div class="cards">
+<!-- PS3 OYUN -->
+<section id="ps3oyun" class="section active">
 
-            <div class="card">
-                <div class="platform">PLAYSTATION 3</div>
-                <h3>PS3 Oyun Arşivi</h3>
-                <p>
-                    Berks PlayStation PS3 oyun bölməsi.
-                    Oyunlarınızı buradan kateqoriyalar üzrə görə bilərsiniz.
-                </p>
+    <h2 class="section-title">
+        🎮 PS3 Oyun
+    </h2>
 
-                <a href="#" class="download">
-                    Oyunlara Bax
-                </a>
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="platform">
+                PLAYSTATION 3
             </div>
 
-        </div>
-    </section>
-
-
-    <!-- PS3 TURKCE YAMA -->
-    <section id="ps3yama" class="section">
-        <h2 class="section-title">🇹🇷 PS3 Türkçe Yama</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="platform">PS3 TÜRKÇE YAMA</div>
-                <h3>PS3 Türkçe Yamalar</h3>
-
-                <p>
-                    PS3 oyunları üçün Türkçe dil yamalarını
-                    bu bölmədən tapa bilərsiniz.
-                </p>
-
-                <a href="#" class="download">
-                    Download
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- PS4 OYUN -->
-    <section id="ps4oyun" class="section">
-        <h2 class="section-title">🎮 PS4 Oyun</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <div class="platform">PLAYSTATION 4</div>
-                <h3>PS4 Oyun Arşivi</h3>
-
-                <p>
-                    Berks PlayStation PS4 oyun bölməsi.
-                    Mövcud oyunları burada görə bilərsiniz.
-                </p>
-
-                <a href="#" class="download">
-                    Oyunlara Bax
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- PS4 TURKCE YAMA -->
-    <section id="ps4yama" class="section">
-        <h2 class="section-title">🇹🇷 PS4 Türkçe Yama</h2>
-
-        <div class="cards">
-
-            <!-- GTA 5 -->
-            <div class="card">
-                <div class="platform">PLAYSTATION 4 • TÜRKÇE YAMA</div>
-
-                <h3>GTA 5 TÜRKÇE YAMA</h3>
-
-                <p>
-                    GTA 5 üçün Türkçe yama faylı.
-                    Faylı endirin və öz PS4 sisteminizdə
-                    uyğun şəkildə istifadə edin.
-                </p>
-
-                <a
-                    href="PS4turkceyama/ED1234-ABOD22222_00-0000000000000000-A0100-V0100.pkg"
-                    class="download"
-                    download
-                >
-                    ⬇ Download
-                </a>
-
-                <div class="success">
-                    ✓ Yama faylı hazırdır
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- AÇIKLAMA -->
-        <div class="info">
-
-            <h3>📌 Quraşdırma haqqında</h3>
+            <h3>
+                PS3 Oyun Arşivi
+            </h3>
 
             <p>
-                Faylı endirin və exFAT formatlı USB və ya HDD-yə atın.
-                Daha sonra öz PS4 sisteminizdə uyğun quraşdırma
-                üsulundan istifadə edin.
+                Berks PlayStation PS3 oyun bölməsi.
+                Buradan PS3 oyunlarını görə bilərsiniz.
             </p>
 
-            <br>
-
-            <p>
-                Yama quraşdırıldıqdan sonra oyuna daxil olub
-                Türkçe dil seçiminin aktiv olduğunu yoxlayın.
-            </p>
-
-            <br>
-
-            <p>
-                <strong>Berks PlayStation:</strong>
-                Azərbaycan 🇦🇿 • Türkçe 🇹🇷
-            </p>
+            <a href="#" class="download">
+                🎮 Oyunlara Bax
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- PS3 TURKCE YAMA -->
+<section id="ps3yama" class="section">
+
+    <h2 class="section-title">
+        🇹🇷 PS3 Türkçe Yama
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="platform">
+                PS3 TÜRKÇE YAMA
+            </div>
+
+            <h3>
+                PS3 Türkçe Yamalar
+            </h3>
+
+            <p>
+                PS3 oyunları üçün Türkçe dil yamaları.
+            </p>
+
+            <a href="#" class="download">
+                ⬇ Download
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PS4 OYUN -->
+<section id="ps4oyun" class="section">
+
+    <h2 class="section-title">
+        🎮 PS4 Oyun
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="platform">
+                PLAYSTATION 4
+            </div>
+
+            <h3>
+                PS4 Oyun Arşivi
+            </h3>
+
+            <p>
+                Berks PlayStation PS4 oyun bölməsi.
+            </p>
+
+            <a href="#" class="download">
+                🎮 Oyunlara Bax
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PS4 TURKCE YAMA -->
+<section id="ps4yama" class="section">
+
+    <h2 class="section-title">
+        🇹🇷 PS4 Türkçe Yama
+    </h2>
+
+
+    <div class="cards">
+
+        <!-- GTA 5 -->
+        <div class="card">
+
+            <div class="platform">
+                PLAYSTATION 4 • TÜRKÇE YAMA
+            </div>
+
+            <h3>
+                GTA 5 TÜRKÇE YAMA
+            </h3>
+
+            <p>
+                GTA 5 üçün Türkçe yama.
+                Faylı aşağıdakı Download düyməsindən
+                əldə edə bilərsiniz.
+            </p>
+
+            <!-- ROOTZ DOWNLOAD LINK -->
+            <a
+                href="https://www.rootz.so/d/16oG0G"
+                class="download"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ⬇ Download
+            </a>
+
+            <span class="success">
+                ✓ GTA 5 Türkçe Yama
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- QURAŞDIRMA AÇIQLAMASI -->
+    <div class="info">
+
+        <h3>
+            📌 Quraşdırma / Kurulum
+        </h3>
+
+        <p>
+            Faylı endirin və exFAT formatlı USB və ya HDD-yə atın.
+            Daha sonra PS4 sisteminizdə GoldHEN vasitəsilə
+            uyğun quraşdırma üsulundan istifadə edin.
+        </p>
+
+        <br>
+
+        <p>
+            Yama quraşdırıldıqdan sonra oyuna daxil olun
+            və Türkçe dil seçiminin aktiv olduğunu yoxlayın.
+        </p>
+
+        <br>
+
+        <p>
+            🇦🇿 Azərbaycan dili • 🇹🇷 Türkçe
+        </p>
+
+    </div>
+
+</section>
 
 </main>
 
 
+<!-- FOOTER -->
 <footer>
-    © 2026 <strong>Berks PlayStation</strong>
-    — PS3 & PS4 Oyun / Türkçe Yama
+
+    © 2026
+    <strong>Berks PlayStation</strong>
+
+    —
+    PS3 & PS4 Oyun / Türkçe Yama
+
 </footer>
 
 
@@ -432,26 +616,31 @@
 
 function openTab(tabName, button) {
 
-    // Bütün bölmələri gizlət
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-    });
+    // Bütün bölmələri bağla
+    document.querySelectorAll(".section").forEach(
+        section => {
+            section.classList.remove("active");
+        }
+    );
 
-    // Bütün düymələrdən active-i sil
-    document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
-    });
+    // Aktiv düymələri sıfırla
+    document.querySelectorAll("nav button").forEach(
+        btn => {
+            btn.classList.remove("active");
+        }
+    );
 
-    // Seçilən bölməni göstər
-    document.getElementById(tabName).classList.add('active');
+    // Seçilən bölməni aç
+    document.getElementById(tabName)
+        .classList.add("active");
 
-    // Seçilən düyməni aktiv et
-    button.classList.add('active');
+    // Düyməni aktiv et
+    button.classList.add("active");
 
-    // Səhifənin yuxarısına keç
+    // Yuxarı qayıt
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth"
     });
 }
 
@@ -459,4 +648,3 @@ function openTab(tabName, button) {
 
 </body>
 </html>
-```
