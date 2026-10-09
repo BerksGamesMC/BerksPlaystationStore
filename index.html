@@ -978,21 +978,11 @@
 </style>
 
 
-<style id="farcry4-turkce-yama-style">
-#ps3-patches .farcry4-turkce-image-wrap {
-  display:block; width:min(100%,512px); max-width:512px;
-  aspect-ratio:1/1; height:auto; margin:0 auto; overflow:hidden;
-}
-#ps3-patches .farcry4-turkce-image-wrap .game-image {
-  display:block; width:100%; height:100%; aspect-ratio:1/1;
-  object-fit:cover; object-position:center;
-}
-#ps3-patches .game-card:has(.farcry4-turkce-image-wrap) {
-  display:flex; flex-direction:column; overflow:hidden;
-}
-#ps3-patches .game-card:has(.farcry4-turkce-image-wrap) .card-body {
-  width:100%; box-sizing:border-box;
-}
+<style id="blur-ps3-card-style">
+#ps3-games .blur-ps3-card { display:flex; flex-direction:column; overflow:hidden; }
+#ps3-games .blur-image-wrap { display:block; width:min(100%,512px); max-width:512px; aspect-ratio:1/1; height:auto; margin:0 auto; overflow:hidden; }
+#ps3-games .blur-image-wrap .game-image { display:block; width:100%; height:100%; aspect-ratio:1/1; object-fit:cover; object-position:center; }
+#ps3-games .blur-ps3-card .card-body { width:100%; box-sizing:border-box; }
 </style>
 
 </head>
@@ -1158,6 +1148,26 @@
             </div>
           </div>
         </article>
+
+        <article class="game-card blur-ps3-card" data-search="blur ps3 playstation 3 racing yarış oyunu">
+          <div class="game-image-wrap blur-image-wrap">
+            <img class="game-image" src="foto/blur.png" alt="Blur PS3 oyun şəkli" loading="lazy"
+              onerror="this.closest('.blur-image-wrap').innerHTML='<div class=&quot;image-placeholder&quot;>🏎️ BLUR</div>'">
+          </div>
+          <div class="card-body">
+            <span class="platform-tag">PLAYSTATION 3 • OYUN</span>
+            <h3>BLUR</h3>
+            <p>PS3 üçün Blur yarış oyunu. OYUN, PATCH və FIX düymələrindən istifadə et.</p>
+            <div class="card-actions blur-actions">
+              <a class="download-button" href="https://cdn-files.alcyone.so/anonymous/1791543791167-000000-NPEB00759_00-1GAME00000000000.pkg?filename=000000-NPEB00759_00-1GAME00000000000.pkg"
+                 target="_blank" rel="noopener noreferrer">⬇ OYUN</a>
+              <a class="download-button" href="https://cdn-files.alcyone.so/anonymous/1791544256614-000000-NPEB00759_00-2PATCH0000000000.pkg?filename=000000-NPEB00759_00-2PATCH0000000000.pkg"
+                 target="_blank" rel="noopener noreferrer">⬇ PATCH</a>
+              <a class="download-button" href="https://cdn-files.alcyone.so/anonymous/1791544344286-000000-NPEB00759_00-3LIC000000000000.pkg?filename=000000-NPEB00759_00-3LIC000000000000.pkg"
+                 target="_blank" rel="noopener noreferrer">⬇ FIX</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1173,23 +1183,14 @@
       </div>
 
       <div class="card-grid">
-        <article class="game-card"
-          data-search="far cry 4 farcry4 ps3 türkçe yama turkce yama playstation 3">
-          <div class="game-image-wrap farcry4-turkce-image-wrap">
-            <img class="game-image"
-              src="foto/farcry5.png"
-              alt="Far Cry 4 Türkçe Yama"
-              loading="lazy"
-              onerror="this.closest('.farcry4-turkce-image-wrap').innerHTML='<div class=&quot;image-placeholder&quot;>🎮 Far Cry 4 Türkçe Yama</div>'">
-          </div>
+        <article class="game-card" data-search="ps3 türkçe yama turkce yama tərcümə ceviri translation">
+          <div class="image-placeholder" aria-hidden="true">🌐</div>
           <div class="card-body">
-            <span class="platform-tag">PS3 • TÜRKÇE YAMA</span>
-            <h3>FAR CRY 4 TÜRKÇE YAMA</h3>
-            <p>Far Cry 4 PS3 Türkçe yama indirme bağlantısı.</p>
+            <span class="platform-tag">PS3 TÜRKÇE YAMA</span>
+            <h3>PS3 Türkçe Yama Arxivi</h3>
+            <p>Bu bölməyə oyun adı, yama haqqında məlumat və icazəli yükləmə linkləri əlavə edə bilərsən.</p>
             <div class="card-actions">
-              <a class="download-button"
-                href="https://drive.usercontent.google.com/download?id=1yqErM80lk71h8Jf-Uo6fOYgOo8J9iyir&export=download&authuser=0&confirm=t&uuid=1ab04a8d-be50-447d-b0c1-429e82b74c1b&at=AMrWOn2XOna95VnmJRyZDhSN2ABH%3A1791541753291"
-                target="_blank" rel="noopener noreferrer">⬇ Download</a>
+              <a class="download-button" href="#order">Məlumat al</a>
             </div>
           </div>
         </article>
