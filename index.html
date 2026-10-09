@@ -962,36 +962,36 @@
     }
   </style>
 
-<style id="berks-gta-turkce-square-fix">
-/* Fix GTA 5 Turkish-patch artwork: square card image, not a panoramic banner */
-#ps4-patches .game-card {
-  display: flex !important;
-  flex-direction: column !important;
-  overflow: hidden;
+<style id="farcry4-ps3-card-style">
+#ps3-games .farcry4-card { display:flex; flex-direction:column; overflow:hidden; }
+#ps3-games .farcry4-image-wrap {
+  width:min(100%, 512px); max-width:512px; aspect-ratio:1/1;
+  height:auto; margin:0 auto; overflow:hidden; flex:0 0 auto;
 }
-#ps4-patches .game-image-wrap {
-  display: block !important;
-  width: min(100%, 512px) !important;
-  max-width: 512px !important;
-  height: auto !important;
-  aspect-ratio: 1 / 1 !important;
-  flex: 0 0 auto !important;
-  margin: 0 auto !important;
-  overflow: hidden !important;
+#ps3-games .farcry4-image-wrap .game-image {
+  display:block; width:100%; height:100%; aspect-ratio:1/1;
+  object-fit:cover; object-position:center;
 }
-#ps4-patches .game-image-wrap img,
-#ps4-patches img.game-image {
-  display: block !important;
-  width: 100% !important;
-  max-width: 512px !important;
-  height: 100% !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  object-position: center !important;
+#ps3-games .farcry4-card .card-body { width:100%; box-sizing:border-box; }
+#ps3-games .farcry4-actions { display:flex; flex-wrap:wrap; gap:10px; }
+#ps3-games .farcry4-actions .download-button { display:inline-flex; align-items:center; justify-content:center; }
+</style>
+
+
+<style id="farcry4-turkce-yama-style">
+#ps3-patches .farcry4-turkce-image-wrap {
+  display:block; width:min(100%,512px); max-width:512px;
+  aspect-ratio:1/1; height:auto; margin:0 auto; overflow:hidden;
 }
-#ps4-patches .card-body {
-  width: 100% !important;
-  box-sizing: border-box !important;
+#ps3-patches .farcry4-turkce-image-wrap .game-image {
+  display:block; width:100%; height:100%; aspect-ratio:1/1;
+  object-fit:cover; object-position:center;
+}
+#ps3-patches .game-card:has(.farcry4-turkce-image-wrap) {
+  display:flex; flex-direction:column; overflow:hidden;
+}
+#ps3-patches .game-card:has(.farcry4-turkce-image-wrap) .card-body {
+  width:100%; box-sizing:border-box;
 }
 </style>
 
@@ -1134,6 +1134,30 @@
             </div>
           </div>
         </article>
+
+        <article class="game-card farcry4-card"
+          data-search="far cry 4 farcry4 ps3 playstation 3 oyun">
+          <div class="game-image-wrap farcry4-image-wrap">
+            <img class="game-image"
+              src="foto/farcry5.png"
+              alt="Far Cry 4 PS3 oyun şəkli"
+              loading="lazy"
+              onerror="this.closest('.farcry4-image-wrap').innerHTML='<div class=&quot;image-placeholder&quot;>🎮 Far Cry 4</div>'">
+          </div>
+          <div class="card-body">
+            <span class="platform-tag">PLAYSTATION 3 • OYUN</span>
+            <h3>FAR CRY 4</h3>
+            <p>Far Cry 4 üçün Oyun, Patch və Fix linkləri.</p>
+            <div class="card-actions farcry4-actions">
+              <a class="download-button" href="https://www.rootz.so/d/iChay"
+                 target="_blank" rel="noopener noreferrer">⬇ OYUN</a>
+              <a class="download-button" href="https://www.rootz.so/d/2HB5xg"
+                 target="_blank" rel="noopener noreferrer">⬇ PATCH</a>
+              <a class="download-button" href="https://www.rootz.so/d/2LCwpE"
+                 target="_blank" rel="noopener noreferrer">⬇ FIX</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1149,14 +1173,23 @@
       </div>
 
       <div class="card-grid">
-        <article class="game-card" data-search="ps3 türkçe yama turkce yama tərcümə ceviri translation">
-          <div class="image-placeholder" aria-hidden="true">🌐</div>
+        <article class="game-card"
+          data-search="far cry 4 farcry4 ps3 türkçe yama turkce yama playstation 3">
+          <div class="game-image-wrap farcry4-turkce-image-wrap">
+            <img class="game-image"
+              src="foto/farcry5.png"
+              alt="Far Cry 4 Türkçe Yama"
+              loading="lazy"
+              onerror="this.closest('.farcry4-turkce-image-wrap').innerHTML='<div class=&quot;image-placeholder&quot;>🎮 Far Cry 4 Türkçe Yama</div>'">
+          </div>
           <div class="card-body">
-            <span class="platform-tag">PS3 TÜRKÇE YAMA</span>
-            <h3>PS3 Türkçe Yama Arxivi</h3>
-            <p>Bu bölməyə oyun adı, yama haqqında məlumat və icazəli yükləmə linkləri əlavə edə bilərsən.</p>
+            <span class="platform-tag">PS3 • TÜRKÇE YAMA</span>
+            <h3>FAR CRY 4 TÜRKÇE YAMA</h3>
+            <p>Far Cry 4 PS3 Türkçe yama indirme bağlantısı.</p>
             <div class="card-actions">
-              <a class="download-button" href="#order">Məlumat al</a>
+              <a class="download-button"
+                href="https://drive.usercontent.google.com/download?id=1yqErM80lk71h8Jf-Uo6fOYgOo8J9iyir&export=download&authuser=0&confirm=t&uuid=1ab04a8d-be50-447d-b0c1-429e82b74c1b&at=AMrWOn2XOna95VnmJRyZDhSN2ABH%3A1791541753291"
+                target="_blank" rel="noopener noreferrer">⬇ Download</a>
             </div>
           </div>
         </article>
