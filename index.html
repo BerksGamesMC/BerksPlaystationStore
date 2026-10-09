@@ -961,6 +961,40 @@
       }
     }
   </style>
+
+<style id="berks-square-patch-fix">
+/* GTA 5 Türkçe Yama: kare görsel */
+#ps4-patches .game-image-wrap {
+  width: 100%;
+  max-width: 512px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+}
+#ps4-patches .game-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+}
+#ps4-patches .game-card {
+  grid-template-columns: minmax(0, 512px) minmax(0, 1fr);
+  align-items: stretch;
+}
+@media (max-width: 760px) {
+  #ps4-patches .game-card {
+    grid-template-columns: 1fr;
+  }
+  #ps4-patches .game-image-wrap {
+    max-width: 512px;
+  }
+}
+</style>
+
 </head>
 
 <body>
