@@ -1,650 +1,1443 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050811">
+  <meta name="description" content="Berks PlayStation — PS3 və PS4 oyun yazılması, Türkçe yamalar və WhatsApp sifarişi.">
+  <title>Berks PlayStation | PS3 & PS4</title>
 
-<title>Berks PlayStation</title>
+  <style>
+    /* =========================================================
+       BERKS PLAYSTATION — NEON GAMING THEME
+       ========================================================= */
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background:
-        radial-gradient(circle at top, #151d2b 0%, #080b10 45%, #030405 100%);
-    color: white;
-    min-height: 100vh;
-}
-
-/* HEADER */
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 18px 5%;
-
-    background: rgba(5, 8, 13, 0.94);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid #1d65d8;
-    box-shadow: 0 0 30px rgba(0, 110, 255, 0.15);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    font-size: 27px;
-    font-weight: 900;
-}
-
-.logo-icon {
-    width: 46px;
-    height: 46px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background: linear-gradient(135deg, #087cff, #00d4ff);
-
-    box-shadow:
-        0 0 15px rgba(0, 130, 255, .6),
-        inset 0 0 15px rgba(255,255,255,.15);
-}
-
-nav {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-nav button {
-    padding: 11px 15px;
-
-    color: #bbb;
-    background: #0c1016;
-
-    border: 1px solid #252b35;
-    border-radius: 10px;
-
-    font-weight: bold;
-    cursor: pointer;
-
-    transition: .25s;
-}
-
-nav button:hover,
-nav button.active {
-    color: white;
-
-    background: linear-gradient(135deg, #087cff, #005bea);
-
-    border-color: #087cff;
-
-    box-shadow: 0 0 18px rgba(0, 120, 255, .35);
-}
-
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 85px 20px 60px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 7vw, 78px);
-    font-weight: 1000;
-
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #1684ff,
-        #00d4ff,
-        #ffffff
-    );
-
-    background-size: 300%;
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    animation: gradient 5s infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0%;
+    :root {
+      --bg: #050811;
+      --bg-soft: #0a1020;
+      --panel: rgba(13, 22, 41, .88);
+      --panel-strong: #0d1629;
+      --blue: #1684ff;
+      --cyan: #00e5ff;
+      --purple: #8b5cf6;
+      --green: #25d366;
+      --text: #f5f8ff;
+      --muted: #a1aec4;
+      --border: rgba(83, 151, 255, .24);
+      --glow: 0 0 22px rgba(22, 132, 255, .25);
+      --radius: 20px;
+      --max-width: 1220px;
     }
 
-    50% {
-        background-position: 100%;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    100% {
-        background-position: 0%;
-    }
-}
-
-.hero p {
-    margin-top: 15px;
-
-    color: #8993a3;
-
-    font-size: 18px;
-}
-
-/* MAIN */
-.container {
-    width: 88%;
-    max-width: 1250px;
-
-    margin: auto;
-
-    padding-bottom: 70px;
-}
-
-.section {
-    display: none;
-
-    animation: fade .35s ease;
-}
-
-.section.active {
-    display: block;
-}
-
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.section-title {
-    font-size: 31px;
-
-    margin-bottom: 25px;
-
-    padding-left: 15px;
-
-    border-left: 5px solid #087cff;
-}
-
-/* CARDS */
-.cards {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(280px, 1fr));
-
-    gap: 22px;
-}
-
-.card {
-    position: relative;
-
-    padding: 28px;
-
-    background:
-        linear-gradient(145deg, #111720, #080b10);
-
-    border: 1px solid #252d38;
-
-    border-radius: 20px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.35);
-
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-7px);
-
-    border-color: #087cff;
-
-    box-shadow:
-        0 15px 45px rgba(0,110,255,.2);
-}
-
-.platform {
-    color: #1684ff;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 10px;
-}
-
-.card h3 {
-    font-size: 25px;
-
-    margin-bottom: 13px;
-}
-
-.card p {
-    color: #9ba5b4;
-
-    line-height: 1.7;
-
-    margin-bottom: 22px;
-}
-
-/* DOWNLOAD */
-.download {
-    display: inline-block;
-
-    padding: 13px 23px;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    border-radius: 11px;
-
-    background:
-        linear-gradient(135deg, #087cff, #005bea);
-
-    box-shadow:
-        0 6px 20px rgba(0,110,255,.25);
-
-    transition: .25s;
-}
-
-.download:hover {
-    transform: scale(1.05);
-
-    box-shadow:
-        0 0 28px rgba(0,130,255,.55);
-}
-
-.success {
-    display: block;
-
-    width: fit-content;
-
-    margin-top: 15px;
-
-    padding: 7px 12px;
-
-    color: #4cff9b;
-
-    background: rgba(0, 200, 100, .08);
-
-    border: 1px solid rgba(0, 200, 100, .2);
-
-    border-radius: 8px;
-
-    font-size: 13px;
-
-    font-weight: bold;
-}
-
-/* INFO */
-.info {
-    margin-top: 35px;
-
-    padding: 27px;
-
-    background: #090d13;
-
-    border: 1px solid #252d38;
-
-    border-radius: 18px;
-}
-
-.info h3 {
-    color: #1684ff;
-
-    margin-bottom: 15px;
-}
-
-.info p {
-    color: #9ba5b4;
-
-    line-height: 1.8;
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-
-    padding: 30px;
-
-    color: #687180;
-
-    border-top: 1px solid #202630;
-}
-
-footer strong {
-    color: #1684ff;
-}
-
-/* MOBILE */
-@media(max-width: 850px) {
-
-    header {
-        flex-direction: column;
-        gap: 18px;
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(0, 105, 255, .16), transparent 35%),
+        radial-gradient(ellipse at 85% 20%, rgba(0, 229, 255, .09), transparent 32%),
+        linear-gradient(145deg, #03050b 0%, #080d19 50%, #04060c 100%);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    nav {
-        justify-content: center;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .17;
+      background-image:
+        linear-gradient(rgba(58, 133, 255, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58, 133, 255, .08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--cyan);
+      box-shadow: 0 0 12px var(--cyan);
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(90deg, #fff 0%, #8dcaff 35%, var(--cyan) 70%, #fff 100%);
+      background-size: 220% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: textShimmer 7s linear infinite;
+    }
+
+    @keyframes textShimmer {
+      to { background-position: 220% center; }
+    }
+
+    @keyframes neonPulse {
+      0%, 100% {
+        box-shadow: 0 0 14px rgba(22, 132, 255, .18);
+      }
+      50% {
+        box-shadow: 0 0 28px rgba(0, 229, 255, .3);
+      }
+    }
+
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { border-color: rgba(22, 132, 255, .35); }
+      50% { border-color: rgba(0, 229, 255, .7); }
+    }
+
+    /* TOP SERVICE AD */
+    .top-ad {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 13px 0;
+      background: linear-gradient(90deg, #06162b, #071d35, #09132a);
+      border-bottom: 1px solid rgba(0, 229, 255, .45);
+    }
+
+    .top-ad::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(110deg, transparent 10%, rgba(0, 229, 255, .12), transparent 65%);
+      animation: adSweep 7s linear infinite;
+    }
+
+    @keyframes adSweep {
+      from { transform: translateX(-70%); }
+      to { transform: translateX(70%); }
+    }
+
+    .ad-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .ad-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 10px;
+      border: 1px solid rgba(0, 229, 255, .5);
+      border-radius: 999px;
+      color: var(--cyan);
+      background: rgba(0, 229, 255, .07);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .ad-copy {
+      color: #edf7ff;
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .ad-phone {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-shadow: 0 0 12px rgba(0, 229, 255, .6);
+    }
+
+    .ad-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      color: #04140a;
+      background: var(--green);
+      font-size: .82rem;
+      font-weight: 900;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .ad-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(37, 211, 102, .45);
+    }
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(4, 8, 17, .86);
+      border-bottom: 1px solid rgba(83, 151, 255, .2);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.45rem;
+      font-weight: 1000;
+      background: linear-gradient(145deg, #087cff, #00d9ff);
+      box-shadow: 0 0 22px rgba(0, 145, 255, .4), inset 0 0 12px rgba(255, 255, 255, .2);
+      transform: rotate(-3deg);
+    }
+
+    .brand-name {
+      font-size: 1.22rem;
+      font-weight: 950;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+
+    .brand-name span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .64rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .nav-button {
+      padding: 10px 13px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      color: #b6c2d5;
+      background: transparent;
+      font-size: .82rem;
+      font-weight: 800;
+      transition: .22s ease;
+    }
+
+    .nav-button:hover,
+    .nav-button.active {
+      color: white;
+      border-color: rgba(22, 132, 255, .5);
+      background: linear-gradient(135deg, rgba(22, 132, 255, .22), rgba(0, 229, 255, .08));
+      box-shadow: inset 0 0 15px rgba(22, 132, 255, .08), 0 0 15px rgba(22, 132, 255, .1);
+    }
+
+    /* HERO */
     .hero {
-        padding-top: 55px;
+      position: relative;
+      padding: 82px 0 42px;
+      text-align: center;
     }
-}
-</style>
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 240px;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      background: rgba(0, 111, 255, .12);
+      filter: blur(95px);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      margin-top: 17px;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 1000;
+      letter-spacing: -.065em;
+      line-height: 1.04;
+      text-shadow: 0 0 35px rgba(22, 132, 255, .18);
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 19px auto 0;
+      color: var(--muted);
+      font-size: clamp(.96rem, 2vw, 1.1rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 27px;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 47px;
+      padding: 12px 19px;
+      border-radius: 12px;
+      font-weight: 900;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .button-primary {
+      color: white;
+      background: linear-gradient(110deg, #087cff, #00aaff);
+      box-shadow: 0 0 22px rgba(22, 132, 255, .28);
+    }
+
+    .button-secondary {
+      color: #d8e8ff;
+      border: 1px solid var(--border);
+      background: rgba(14, 24, 43, .72);
+    }
+
+    .button-primary:hover,
+    .button-secondary:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary:hover {
+      box-shadow: 0 0 28px rgba(22, 132, 255, .5);
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 35px auto 0;
+      max-width: 750px;
+    }
+
+    .stat {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(9, 16, 30, .7);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 1.25rem;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: .76rem;
+      margin-top: 3px;
+    }
+
+    /* SEARCH */
+    .search-section {
+      margin: 18px auto 45px;
+      max-width: 760px;
+    }
+
+    .search-label {
+      display: block;
+      margin-bottom: 10px;
+      color: #d8e8ff;
+      font-size: .88rem;
+      font-weight: 800;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 9px 8px 16px;
+      border: 1px solid rgba(22, 132, 255, .38);
+      border-radius: 16px;
+      background: rgba(10, 17, 31, .94);
+      box-shadow: 0 0 25px rgba(22, 132, 255, .08), inset 0 0 18px rgba(22, 132, 255, .04);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, .08), 0 0 26px rgba(0, 229, 255, .12);
+    }
+
+    .search-symbol {
+      color: var(--cyan);
+      font-size: 1.35rem;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-width: 0;
+      padding: 10px 0;
+      color: white;
+      outline: none;
+      border: 0;
+      background: transparent;
+    }
+
+    .search-box input::placeholder {
+      color: #718098;
+    }
+
+    .clear-search {
+      padding: 9px 12px;
+      border: 1px solid #293953;
+      border-radius: 10px;
+      color: #c5d4ea;
+      background: #101a2a;
+      font-weight: 800;
+    }
+
+    .clear-search:hover {
+      color: white;
+      border-color: var(--blue);
+    }
+
+    .search-status {
+      margin: 9px 4px 0;
+      color: #8392aa;
+      font-size: .78rem;
+    }
+
+    /* SECTIONS AND CARDS */
+    .content-area {
+      padding-bottom: 68px;
+    }
+
+    .content-section {
+      display: none;
+      animation: sectionEnter .3s ease both;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes sectionEnter {
+      from { opacity: 0; transform: translateY(9px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.55rem, 4vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .section-line {
+      width: 64px;
+      height: 3px;
+      margin-top: 13px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      box-shadow: 0 0 14px rgba(0, 229, 255, .35);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+      gap: 22px;
+    }
+
+    .game-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(83, 151, 255, .2);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(17, 28, 48, .96), rgba(7, 12, 22, .98));
+      box-shadow: 0 15px 38px rgba(0, 0, 0, .2);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 229, 255, .55);
+      box-shadow: 0 16px 42px rgba(0, 104, 255, .13), 0 0 20px rgba(0, 229, 255, .06);
+    }
+
+    .game-image-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #101a2a;
+    }
+
+    .game-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .game-card:hover .game-image {
+      transform: scale(1.045);
+    }
+
+    .image-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+      color: #7e9cc5;
+      background: radial-gradient(circle at center, #122b4b, #09111e 70%);
+      font-size: 3rem;
+    }
+
+    .platform-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 9px;
+      border: 1px solid rgba(0, 229, 255, .25);
+      border-radius: 8px;
+      color: var(--cyan);
+      background: rgba(0, 229, 255, .06);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .card-body {
+      padding: 21px;
+    }
+
+    .card-body h3 {
+      margin-top: 12px;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .card-body p {
+      min-height: 65px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 16px;
+      border: 1px solid rgba(22, 132, 255, .4);
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(115deg, #087cff, #0755cf);
+      box-shadow: 0 0 17px rgba(22, 132, 255, .15);
+      font-size: .85rem;
+      font-weight: 900;
+      transition: .2s;
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(22, 132, 255, .35);
+    }
+
+    .card-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #70f2b0;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    .no-results {
+      display: none;
+      padding: 34px 20px;
+      margin-top: 12px;
+      border: 1px dashed rgba(83, 151, 255, .32);
+      border-radius: 17px;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(10, 17, 31, .65);
+    }
+
+    /* SERVICE PANEL */
+    .service-panel {
+      position: relative;
+      overflow: hidden;
+      margin-top: 48px;
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid rgba(0, 229, 255, .28);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(0, 229, 255, .1), transparent 38%),
+        linear-gradient(125deg, #0d1a2e, #080e1a);
+      animation: borderGlow 5s ease-in-out infinite;
+    }
+
+    .service-panel h2 {
+      font-size: clamp(1.55rem, 4vw, 2.2rem);
+      line-height: 1.25;
+    }
+
+    .service-panel p {
+      max-width: 750px;
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .service-panel .hero-actions {
+      justify-content: flex-start;
+    }
+
+    .whatsapp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px 18px;
+      border: 1px solid rgba(37, 211, 102, .55);
+      border-radius: 12px;
+      color: #04170b;
+      background: linear-gradient(135deg, #3bea7e, #25d366);
+      box-shadow: 0 0 20px rgba(37, 211, 102, .18);
+      font-weight: 950;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px rgba(37, 211, 102, .36);
+    }
+
+    /* INSTALL INFO */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .info-item {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(11, 19, 34, .8);
+    }
+
+    .info-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      color: var(--cyan);
+      background: rgba(0, 229, 255, .08);
+      border: 1px solid rgba(0, 229, 255, .18);
+      font-size: 1.2rem;
+    }
+
+    .info-item h3 {
+      font-size: 1rem;
+    }
+
+    .info-item p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 35px 0 24px;
+      border-top: 1px solid rgba(83, 151, 255, .2);
+      background: rgba(3, 6, 12, .85);
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-size: 1.08rem;
+      font-weight: 950;
+    }
+
+    .footer-brand span {
+      color: var(--cyan);
+    }
+
+    .footer-text {
+      margin-top: 6px;
+      color: #8190a7;
+      font-size: .8rem;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 15px;
+      border: 1px solid rgba(83, 151, 255, .25);
+      border-radius: 12px;
+      color: #e8f1ff;
+      background: #0b1322;
+      font-weight: 850;
+      transition: .2s;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 18px rgba(0, 229, 255, .12);
+    }
+
+    .tiktok-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .footer-bottom {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(83, 151, 255, .12);
+      color: #687891;
+      text-align: center;
+      font-size: .76rem;
+    }
+
+    /* SMALL DETAILS */
+    .scroll-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 40;
+      display: none;
+      width: 45px;
+      height: 45px;
+      border: 1px solid rgba(0, 229, 255, .35);
+      border-radius: 14px;
+      color: white;
+      background: rgba(8, 23, 43, .9);
+      box-shadow: var(--glow);
+      font-size: 1.2rem;
+    }
+
+    .scroll-top.visible {
+      display: grid;
+      place-items: center;
+    }
+
+    ::selection {
+      color: white;
+      background: #087cff;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .header-inner {
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .main-nav {
+        justify-content: flex-start;
+        width: 100%;
+      }
+
+      .nav-button {
+        flex: 1 1 auto;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(92%, 520px);
+      }
+
+      .top-ad {
+        padding: 12px 10px;
+      }
+
+      .ad-inner {
+        gap: 8px;
+      }
+
+      .ad-copy {
+        font-size: .8rem;
+      }
+
+      .ad-phone {
+        font-size: .9rem;
+      }
+
+      .brand-name {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero h1 {
+        letter-spacing: -.045em;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .game-image {
+        height: 220px;
+      }
+
+      .footer-main {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .search-box {
+        gap: 7px;
+        padding-left: 11px;
+      }
+
+      .clear-search {
+        padding: 8px 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Inline SVG icons are embedded locally; no icon library required. -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute">
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24">
+      <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.1 1.6 5.9L.2 24l6.5-1.7a11.8 11.8 0 0 0 5.4 1.3h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.2-6.1-3.5-8.3ZM12.2 21.6a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.9 1 1-3.8-.3-.4a9.8 9.8 0 1 1 8.6 4.8Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7.1a8 8 0 0 1-2.4-1.5 9.1 9.1 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.4.3-.6s0-.4 0-.6-.7-1.7-1-2.3c-.2-.6-.5-.5-.7-.5H7.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.2-.3-.3-.7-.5Z"/>
+    </symbol>
+    <symbol id="icon-tiktok" viewBox="0 0 24 24">
+      <path d="M19.6 6.2a6.8 6.8 0 0 1-4.2-4.8V.7h-4.2v15.1a3.1 3.1 0 1 1-2.2-3V8.5a7.4 7.4 0 1 0 6.4 7.3V8.1a10.8 10.8 0 0 0 6.1 1.9V5.9c-.7 0-1.3.1-1.9.3Z"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24">
+      <path d="M12 3v11m-4-4 4 4 4-4M4 17v3h16v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-gamepad" viewBox="0 0 24 24">
+      <path d="M6 8h12a4 4 0 0 1 3.8 5.2l-1.1 3.5a2.5 2.5 0 0 1-4.1 1.1L14 15h-4l-2.6 2.8a2.5 2.5 0 0 1-4.1-1.1l-1.1-3.5A4 4 0 0 1 6 8Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M7 10v5m-2.5-2.5h5m7-1h.1m2.4 2h.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+  </svg>
 
-<!-- HEADER -->
-<header>
-
-    <div class="logo">
-        <div class="logo-icon">B</div>
-        <span>Berks PlayStation</span>
+  <!-- Top advertisement / game installation order bar -->
+  <aside class="top-ad" aria-label="PS3 və PS4 oyun yazılması reklamı">
+    <div class="container ad-inner">
+      <span class="ad-badge">★ SİFARİŞ QƏBULU</span>
+      <span class="ad-copy">PS3 və PS4 üçün oyun yazılması</span>
+      <a class="ad-phone" href="tel:0997407939">099-740-79-39</a>
+      <a class="ad-whatsapp"
+         href="https://wa.me/994997407939?text=Salam%2C%20PS3%2FPS4%20oyun%20yazilmasi%20ucun%20sifaris%20vermek%20isteyirem."
+         target="_blank" rel="noopener noreferrer">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+        WhatsApp sifarişi
+      </a>
     </div>
+  </aside>
 
-    <nav>
+  <!-- Sticky navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Berks PlayStation ana səhifə">
+        <span class="brand-mark">B</span>
+        <span class="brand-name">
+          BERKS PLAYSTATION
+          <span>Gaming • Patches • Community</span>
+        </span>
+      </a>
 
-        <button
-            class="active"
-            onclick="openTab('ps3oyun', this)">
-            PS3 Oyun
-        </button>
+      <nav class="main-nav" aria-label="Əsas menyu">
+        <button class="nav-button active" type="button" data-tab="ps3-games">PS3 Oyun</button>
+        <button class="nav-button" type="button" data-tab="ps3-patches">PS3 Türkçe Yama</button>
+        <button class="nav-button" type="button" data-tab="ps4-games">PS4 Oyun</button>
+        <button class="nav-button" type="button" data-tab="ps4-patches">PS4 Türkçe Yama</button>
+      </nav>
+    </div>
+  </header>
 
-        <button
-            onclick="openTab('ps3yama', this)">
-            PS3 Türkçe Yama
-        </button>
-
-        <button
-            onclick="openTab('ps4oyun', this)">
-            PS4 Oyun
-        </button>
-
-        <button
-            onclick="openTab('ps4yama', this)">
-            PS4 Türkçe Yama
-        </button>
-
-    </nav>
-
-</header>
-
-
-<!-- HERO -->
-<section class="hero">
-
-    <h1>BERKS PLAYSTATION</h1>
-
-    <p>
-        PS3 & PS4 Oyunlar • Türkçe Yamalar • Berks PlayStation
+  <!-- Hero section -->
+  <section class="hero container">
+    <span class="eyebrow">PlayStation oyun dünyası</span>
+    <h1 class="gradient-text">BERKS PLAYSTATION</h1>
+    <p class="hero-subtitle">
+      PS3 və PS4 oyunları, Türkçe yama bölməsi və sifariş üçün rahat əlaqə.
+      <br>Oyun dünyana neon toxunuşu!
     </p>
 
-</section>
-
-
-<main class="container">
-
-
-<!-- PS3 OYUN -->
-<section id="ps3oyun" class="section active">
-
-    <h2 class="section-title">
-        🎮 PS3 Oyun
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="platform">
-                PLAYSTATION 3
-            </div>
-
-            <h3>
-                PS3 Oyun Arşivi
-            </h3>
-
-            <p>
-                Berks PlayStation PS3 oyun bölməsi.
-                Buradan PS3 oyunlarını görə bilərsiniz.
-            </p>
-
-            <a href="#" class="download">
-                🎮 Oyunlara Bax
-            </a>
-
-        </div>
-
+    <div class="hero-actions">
+      <a class="button-primary" href="#catalog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-gamepad"/></svg>
+        Kataloqa bax
+      </a>
+      <a class="button-secondary"
+         href="https://wa.me/994997407939?text=Salam%2C%20oyun%20yazilmasi%20ucun%20sifaris%20vermek%20isteyirem."
+         target="_blank" rel="noopener noreferrer">
+        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+        WhatsApp ilə sifariş
+      </a>
     </div>
 
-</section>
-
-
-<!-- PS3 TURKCE YAMA -->
-<section id="ps3yama" class="section">
-
-    <h2 class="section-title">
-        🇹🇷 PS3 Türkçe Yama
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="platform">
-                PS3 TÜRKÇE YAMA
-            </div>
-
-            <h3>
-                PS3 Türkçe Yamalar
-            </h3>
-
-            <p>
-                PS3 oyunları üçün Türkçe dil yamaları.
-            </p>
-
-            <a href="#" class="download">
-                ⬇ Download
-            </a>
-
-        </div>
-
+    <div class="stats" aria-label="Sayt bölmələri">
+      <div class="stat">
+        <strong>PS3</strong>
+        <span>Oyunlar və yamalar</span>
+      </div>
+      <div class="stat">
+        <strong>PS4</strong>
+        <span>Oyunlar və yamalar</span>
+      </div>
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>Sayta giriş</span>
+      </div>
     </div>
+  </section>
 
-</section>
-
-
-<!-- PS4 OYUN -->
-<section id="ps4oyun" class="section">
-
-    <h2 class="section-title">
-        🎮 PS4 Oyun
-    </h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="platform">
-                PLAYSTATION 4
-            </div>
-
-            <h3>
-                PS4 Oyun Arşivi
-            </h3>
-
-            <p>
-                Berks PlayStation PS4 oyun bölməsi.
-            </p>
-
-            <a href="#" class="download">
-                🎮 Oyunlara Bax
-            </a>
-
-        </div>
-
+  <!-- Live search -->
+  <section class="container search-section" aria-label="Oyun axtarışı">
+    <label class="search-label" for="siteSearch">Saytda axtar / Sitede ara</label>
+    <div class="search-box">
+      <svg class="icon search-symbol" aria-hidden="true"><use href="#icon-search"/></svg>
+      <input id="siteSearch" type="search"
+        placeholder="GTA 5, PS4, Türkçe yama..."
+        autocomplete="off" aria-describedby="searchStatus">
+      <button id="clearSearch" class="clear-search" type="button" aria-label="Axtarışı təmizlə">✕</button>
     </div>
+    <p class="search-status" id="searchStatus" aria-live="polite">Oyun və ya yama adı yaz.</p>
+  </section>
 
-</section>
+  <!-- Main catalogue -->
+  <main class="container content-area" id="catalog">
 
+    <!-- PS3 games -->
+    <section id="ps3-games" class="content-section active" aria-labelledby="ps3GamesTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PlayStation 3</span>
+          <h2 id="ps3GamesTitle">PS3 Oyunları</h2>
+          <p>PS3 oyun kataloqu — yeni kartlar əlavə edə bilərsən.</p>
+          <div class="section-line"></div>
+        </div>
+      </div>
 
-<!-- PS4 TURKCE YAMA -->
-<section id="ps4yama" class="section">
-
-    <h2 class="section-title">
-        🇹🇷 PS4 Türkçe Yama
-    </h2>
-
-
-    <div class="cards">
-
-        <!-- GTA 5 -->
-        <div class="card">
-
-            <div class="platform">
-                PLAYSTATION 4 • TÜRKÇE YAMA
+      <div class="card-grid">
+        <article class="game-card" data-search="ps3 oyun playstation 3 oyun arxivi">
+          <div class="image-placeholder" aria-hidden="true">🎮</div>
+          <div class="card-body">
+            <span class="platform-tag">PLAYSTATION 3</span>
+            <h3>PS3 Oyun Arxivi</h3>
+            <p>PS3 oyunları üçün kataloq bölməsi. Oyun məlumatlarını və uyğun linkləri sonradan əlavə et.</p>
+            <div class="card-actions">
+              <a class="download-button" href="#order">
+                <svg class="icon" aria-hidden="true"><use href="#icon-gamepad"/></svg>
+                Sifariş et
+              </a>
             </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-            <h3>
-                GTA 5 TÜRKÇE YAMA
-            </h3>
+    <!-- PS3 patches -->
+    <section id="ps3-patches" class="content-section" aria-labelledby="ps3PatchesTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PlayStation 3</span>
+          <h2 id="ps3PatchesTitle">PS3 Türkçe Yamalar</h2>
+          <p>Türkçe yama və tərcümə məlumatları.</p>
+          <div class="section-line"></div>
+        </div>
+      </div>
 
+      <div class="card-grid">
+        <article class="game-card" data-search="ps3 türkçe yama turkce yama tərcümə ceviri translation">
+          <div class="image-placeholder" aria-hidden="true">🌐</div>
+          <div class="card-body">
+            <span class="platform-tag">PS3 TÜRKÇE YAMA</span>
+            <h3>PS3 Türkçe Yama Arxivi</h3>
+            <p>Bu bölməyə oyun adı, yama haqqında məlumat və icazəli yükləmə linkləri əlavə edə bilərsən.</p>
+            <div class="card-actions">
+              <a class="download-button" href="#order">Məlumat al</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PS4 games -->
+    <section id="ps4-games" class="content-section" aria-labelledby="ps4GamesTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PlayStation 4</span>
+          <h2 id="ps4GamesTitle">PS4 Oyunları</h2>
+          <p>PS4 oyun kataloqu və sifariş bölməsi.</p>
+          <div class="section-line"></div>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="game-card" data-search="ps4 oyun playstation 4 oyun arxivi">
+          <div class="image-placeholder" aria-hidden="true">🕹️</div>
+          <div class="card-body">
+            <span class="platform-tag">PLAYSTATION 4</span>
+            <h3>PS4 Oyun Arxivi</h3>
+            <p>PS4 oyun kataloqu. Oyun yazılması sifarişi üçün WhatsApp düyməsindən istifadə et.</p>
+            <div class="card-actions">
+              <a class="download-button" href="#order">Sifariş et</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PS4 Turkish patches -->
+    <section id="ps4-patches" class="content-section" aria-labelledby="ps4PatchesTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PlayStation 4</span>
+          <h2 id="ps4PatchesTitle">PS4 Türkçe Yamalar</h2>
+          <p>Oyun yamaları və məlumat kartları.</p>
+          <div class="section-line"></div>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <article class="game-card"
+          data-search="gta 5 gta v grand theft auto ps4 türkçe yama turkce yama gta5 gta 5 türkçe çeviri tərcümə">
+
+          <div class="game-image-wrap">
+            <img class="game-image"
+              src="foto/gta5turk.png"
+              alt="GTA 5 Türkçe Yama şəkli"
+              loading="lazy"
+              onerror="this.closest('.game-image-wrap').innerHTML='<div class=&quot;image-placeholder&quot; aria-label=&quot;GTA 5 şəkli əlavə edilməyib&quot;>🎮 GTA 5</div>'">
+          </div>
+
+          <div class="card-body">
+            <span class="platform-tag">PS4 • TÜRKÇE YAMA</span>
+            <h3>GTA 5 TÜRKÇE YAMA</h3>
             <p>
-                GTA 5 üçün Türkçe yama.
-                Faylı aşağıdakı Download düyməsindən
-                əldə edə bilərsiniz.
+              GTA 5 üçün Türkçe yama məlumatı. Download düyməsi
+              səni faylın yerləşdiyi Rootz səhifəsinə yönləndirəcək.
             </p>
-
-            <!-- ROOTZ DOWNLOAD LINK -->
-            <a
+            <div class="card-actions">
+              <a class="download-button"
                 href="https://www.rootz.so/d/16oG0G"
-                class="download"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                ⬇ Download
-            </a>
+                target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg>
+                Download
+              </a>
+              <span class="card-note">● Link səhifəsi</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
 
-            <span class="success">
-                ✓ GTA 5 Türkçe Yama
-            </span>
+    <div class="no-results" id="noResults" role="status">
+      <div style="font-size:2rem;margin-bottom:8px">🔎</div>
+      <strong>Nəticə tapılmadı / Sonuç bulunamadı</strong>
+      <p style="margin-top:7px">Başqa oyun adı və ya kateqoriya yaz.</p>
+    </div>
 
+    <!-- Service advertisement -->
+    <section class="service-panel" id="order">
+      <span class="eyebrow">Berks PlayStation xidmətləri</span>
+      <h2>PS3 və PS4 üçün <span class="gradient-text">oyun yazılması</span></h2>
+      <p>
+        Oyun yazılması üçün WhatsApp üzərindən sifariş qəbul edirik.
+        Konsol modelini və istədiyin oyunu mesajda qeyd et.
+        Əlçatanlıq və uyğunluq sifariş zamanı dəqiqləşdirilir.
+      </p>
+
+      <div class="hero-actions">
+        <a class="whatsapp-button"
+          href="https://wa.me/994997407939?text=Salam%2C%20PS3%20ve%20ya%20PS4%20ucun%20oyun%20yazilmasi%20sifarisi%20vermek%20isteyirem."
+          target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+          WhatsApp ilə sifariş alırıq
+        </a>
+        <a class="button-secondary" href="tel:0997407939">☎ 099-740-79-39</a>
+      </div>
+    </section>
+
+    <!-- Quick information -->
+    <section class="info-grid" aria-label="Məlumat">
+      <article class="info-item">
+        <div class="info-icon">🎮</div>
+        <h3>PS3 və PS4</h3>
+        <p>Oyun yazılması barədə məlumat və sifariş üçün bizimlə əlaqə saxla.</p>
+      </article>
+      <article class="info-item">
+        <div class="info-icon">💬</div>
+        <h3>WhatsApp sifarişi</h3>
+        <p>WhatsApp düyməsinə basaraq mesaj göndərə bilərsən.</p>
+      </article>
+      <article class="info-item">
+        <div class="info-icon">🔎</div>
+        <h3>Ağıllı axtarış</h3>
+        <p>Oyun və yama kartlarını ad, platforma və təsvirə görə axtar.</p>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- Footer and social links -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div>
+          <div class="footer-brand"><span>BERKS</span> PLAYSTATION</div>
+          <p class="footer-text">PS3 & PS4 • Oyunlar • Türkçe Yamalar</p>
         </div>
 
+        <div class="social-links">
+          <a class="social-link"
+            href="https://www.tiktok.com/@berksplaystation"
+            target="_blank" rel="noopener noreferrer"
+            aria-label="TikTok Berks PlayStation profilini aç">
+            <svg class="tiktok-icon" aria-hidden="true"><use href="#icon-tiktok"/></svg>
+            berksplaystation
+          </a>
+          <a class="social-link"
+            href="https://wa.me/994997407939"
+            target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © <span id="year"></span> Berks PlayStation. Bütün hüquqlar qorunur.
+      </div>
     </div>
+  </footer>
 
+  <button class="scroll-top" id="scrollTop" type="button" aria-label="Yuxarı qayıt">↑</button>
 
-    <!-- QURAŞDIRMA AÇIQLAMASI -->
-    <div class="info">
+  <script>
+    /* =========================================================
+       NAVIGATION AND LIVE SEARCH
+       ========================================================= */
 
-        <h3>
-            📌 Quraşdırma / Kurulum
-        </h3>
+    const navButtons = Array.from(document.querySelectorAll(".nav-button"));
+    const sections = Array.from(document.querySelectorAll(".content-section"));
+    const searchInput = document.getElementById("siteSearch");
+    const clearButton = document.getElementById("clearSearch");
+    const searchStatus = document.getElementById("searchStatus");
+    const noResults = document.getElementById("noResults");
+    const scrollTopButton = document.getElementById("scrollTop");
 
-        <p>
-            Faylı endirin və exFAT formatlı USB və ya HDD-yə atın.
-            Daha sonra PS4 sisteminizdə GoldHEN vasitəsilə
-            uyğun quraşdırma üsulundan istifadə edin.
-        </p>
+    let activeTabId = "ps3-games";
 
-        <br>
+    /*
+      Normalizes text so that common Turkish/Azerbaijani characters
+      are easier to search regardless of accents.
+    */
+    function normalizeText(value) {
+      return String(value || "")
+        .toLocaleLowerCase()
+        .replaceAll("ı", "i")
+        .replaceAll("ə", "e")
+        .replaceAll("ş", "s")
+        .replaceAll("ç", "c")
+        .replaceAll("ğ", "g")
+        .replaceAll("ö", "o")
+        .replaceAll("ü", "u")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+    }
 
-        <p>
-            Yama quraşdırıldıqdan sonra oyuna daxil olun
-            və Türkçe dil seçiminin aktiv olduğunu yoxlayın.
-        </p>
+    /*
+      Get the searchable text for a card.
+      data-search allows adding extra keywords without showing them.
+    */
+    function getCardSearchText(card) {
+      const hiddenKeywords = card.dataset.search || "";
+      return normalizeText(card.innerText + " " + hiddenKeywords);
+    }
 
-        <br>
+    /*
+      Update every card, category and search status.
+      Search results can appear across all four platform categories.
+    */
+    function updateSearch() {
+      const query = normalizeText(searchInput.value);
+      let totalMatches = 0;
 
-        <p>
-            🇦🇿 Azərbaycan dili • 🇹🇷 Türkçe
-        </p>
+      sections.forEach((section) => {
+        const cards = Array.from(section.querySelectorAll(".game-card"));
+        let sectionMatches = 0;
 
-    </div>
+        cards.forEach((card) => {
+          const matches = query.length === 0 || getCardSearchText(card).includes(query);
+          card.hidden = !matches;
 
-</section>
+          if (matches) {
+            sectionMatches += 1;
+            totalMatches += 1;
+          }
+        });
 
-</main>
+        section.dataset.matchCount = String(sectionMatches);
+      });
 
+      if (query.length > 0) {
+        sections.forEach((section) => {
+          section.classList.toggle(
+            "active",
+            Number(section.dataset.matchCount || 0) > 0
+          );
+        });
 
-<!-- FOOTER -->
-<footer>
+        navButtons.forEach((button) => {
+          button.classList.remove("active");
+        });
 
-    © 2026
-    <strong>Berks PlayStation</strong>
+        searchStatus.textContent =
+          totalMatches + " nəticə tapıldı / " + totalMatches + " sonuç bulundu";
+      } else {
+        sections.forEach((section) => {
+          section.classList.toggle("active", section.id === activeTabId);
+        });
 
-    —
-    PS3 & PS4 Oyun / Türkçe Yama
+        navButtons.forEach((button) => {
+          button.classList.toggle("active", button.dataset.tab === activeTabId);
+        });
 
-</footer>
+        searchStatus.textContent = "Oyun və ya yama adı yaz.";
+      }
 
+      noResults.style.display = totalMatches === 0 ? "block" : "none";
+    }
 
-<script>
+    /*
+      Clicking a tab clears search and opens that category.
+    */
+    navButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeTabId = button.dataset.tab;
+        searchInput.value = "";
+        updateSearch();
 
-function openTab(tabName, button) {
-
-    // Bütün bölmələri bağla
-    document.querySelectorAll(".section").forEach(
-        section => {
-            section.classList.remove("active");
-        }
-    );
-
-    // Aktiv düymələri sıfırla
-    document.querySelectorAll("nav button").forEach(
-        btn => {
-            btn.classList.remove("active");
-        }
-    );
-
-    // Seçilən bölməni aç
-    document.getElementById(tabName)
-        .classList.add("active");
-
-    // Düyməni aktiv et
-    button.classList.add("active");
-
-    // Yuxarı qayıt
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        document.getElementById("catalog").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
     });
-}
 
-</script>
+    /*
+      Search while typing.
+    */
+    searchInput.addEventListener("input", updateSearch);
 
+    /*
+      Clear search button.
+    */
+    clearButton.addEventListener("click", () => {
+      searchInput.value = "";
+      updateSearch();
+      searchInput.focus();
+    });
+
+    /*
+      Keep search from navigating away if Enter is pressed.
+    */
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        searchInput.value = "";
+        updateSearch();
+      }
+    });
+
+    /*
+      Show the scroll-to-top control only after scrolling.
+    */
+    window.addEventListener("scroll", () => {
+      scrollTopButton.classList.toggle("visible", window.scrollY > 500);
+    }, { passive: true });
+
+    scrollTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /*
+      Current year in footer.
+    */
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /*
+      Initialize catalogue state.
+    */
+    updateSearch();
+  </script>
 </body>
 </html>
